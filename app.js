@@ -44,9 +44,10 @@ socket.on('connection', function(client){
  
   // new client is here! 
   client.on('message', function(msg){ 
-    console.log('message');
+
     client.broadcast(msg);
   });
+  
   client.on('disconnect', function(){
   }); 
 }); 
