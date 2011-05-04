@@ -1,0 +1,33 @@
+.clear {
+  clear: both;
+}
+body {
+  padding-top: 25%;
+}
+a.presser {
+  position: relative;
+  top: -64px;
+  -webkit-box-shadow: 0px 25px 70px #000;
+  -moz-box-shadow: 0px 25px 70px #000;
+  box-shadow: 0px 25px 70px #000;
+  background: #f00;
+  display: block;
+  margin: 0 auto;
+  line-height: 100%;
+  -webkit-border-radius: 64px;
+  -moz-border-radius: 64px;
+  border-radius: 64px;
+  width: 128px;
+  height: 128px;
+}
+a.presser:hover {
+  background: #c00;
+}
+a.presser:active {
+  margin-top: 30px;
+  width: 118px;
+  height: 118px;
+  -webkit-box-shadow: 0px 10px 35px #3f3f3f;
+  -moz-box-shadow: 0px 10px 35px #3f3f3f;
+  box-shadow: 0px 10px 35px #3f3f3f;
+}

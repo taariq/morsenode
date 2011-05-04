@@ -1,6 +1,43 @@
 <html>
-<head></head>
+<head>
+  <title>Piano</title>
+
+  <link rel="stylesheet" type="text/css" href="/styles/app.css">
+  <script src="/socket.io/socket.io.js"></script> 
+    
+  <script src="/scripts/jquery-1.4.3.min.js"></script> 
+  <script>
+    $(document).ready(function(){
+      var socket = new io.Socket(); 
+      socket.connect();
+      
+      socket.on('connect', function(){
+        console.log('connect'); 
+      }) 
+      socket.on('message', function(msg){
+        $('.presser').fadeOut();
+      }) 
+      socket.on('disconnect', function(){
+        
+      })
+       
+      $('.presser').click(function(){
+        socket.send({
+          msg:'hi'}
+        );
+        return false;
+      });
+    });
+  </script>
+</head>
 <body>
-<h1>What up Piano.js</h1>
+
+<a class="presser" href="/"></a>
+
+
+
+<script> 
+ 
+</script> 
 </body>
 </html>
