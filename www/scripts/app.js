@@ -20,11 +20,11 @@ $(document).ready(function(){
   })
   
   var downCounter = 0,
-      isDown = false;
-  $('#presser').mousedown(function(){
-    onMouseDown();
-    isDown = true;
-    return false;
+      isMouseDown = false;
+  $('#presser').mousedown(function(e){
+    onMouseDown(e);
+    isMouseDown = true;
+    return true;
   });
   
   function onMouseDown(e){
@@ -33,6 +33,15 @@ $(document).ready(function(){
     socket.send({
       msg:"down"}
     );
+    
+    // We track our mouse down or up state so we can pop the button up
+    // when the user is pressing the button down but then moves
+    // the mouse off the button and releases it.
+    // The issue was that the button wasn't getting the mouseup
+    // events because the mouse isn't over them. This was causing the button
+    // to get stuck down.
+    isMouseDown = false;
+    
     
     // If an event was supplied it was to signal
     // that we want the default behavior prevented.
@@ -44,9 +53,28 @@ $(document).ready(function(){
     }
   }
   
-  $('#presser').mouseup(function(){
-    onMouseUp();
-    return false;
+  $('#presser').mouseup(function(e){
+    // Ignore these events if the mouse wasn't previously down.
+    // otherwise we are tallying our downCounter incorrectly
+    if(isMouseDown==false){
+      return; 
+    }
+    
+    onMouseUp(e);
+    
+    // See in onMouseDown above about why we are tracking mouse down/up state
+    isMouseDown = false;
+    return true;
+  });
+  
+  $('#presser').mouseleave(function(e){
+    // If the mouse left the bounds of the button while in a pressed down
+    // state we pop the button back up
+    onMouseUp(e);
+    
+    // See in onMouseDown above about why we are tracking mouse down/up state
+    isMouseDown = false;
+    return true;
   });
   
   function onMouseUp(e){

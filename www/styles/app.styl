@@ -3,7 +3,7 @@
 body
   padding-top 25%
   
-a.up, a.down
+#presser.up, #presser.down
   position relative
   top -64px
   box-shadow 0px 45px 35px black
@@ -14,8 +14,11 @@ a.up, a.down
   border-radius 64px
   width 128px
   height 128px
+  &:hover
+    // Mouse should change to the hand when over the button.
+    cursor pointer 
     
-a.down
+#presser.down
   margin-top 25px
   width 118px
   height 118px
