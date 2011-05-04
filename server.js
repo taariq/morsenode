@@ -27,6 +27,7 @@ app.configure('development', function(){
 });
 
 app.configure('production', function(){
+  console.log('Running in Production Mode');
   setupStylus();   
   var oneYear = 31557600000;
   app.use(express.static(__dirname + '/www', { maxAge: oneYear }));
