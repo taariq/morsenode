@@ -1,7 +1,8 @@
 
 var express = require('express'),
     app = express.createServer(),
-    stylus = require('stylus');
+    stylus = require('stylus'),
+    port = 3000;// by default it's 3000. In production it's 80
 
 app.configure(function(){
     app.use(express.methodOverride());
@@ -27,6 +28,7 @@ app.configure('development', function(){
 });
 
 app.configure('production', function(){
+  port = 80;
   console.log('Running in Production Mode');
   setupStylus();   
   var oneYear = 31557600000;
@@ -34,7 +36,7 @@ app.configure('production', function(){
   app.use(express.errorHandler());
 });
 
-app.listen(3000);
+app.listen(80);
 
 // setup socket io logic.
 var io = require('socket.io');

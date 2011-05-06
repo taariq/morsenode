@@ -1,0 +1,14 @@
+{
+    "name": "morsenode",
+	"author": "Francois Labergee",
+    "contributors": [
+        "Darren Lafae"
+    ],
+    "dependencies": [
+        "express",
+	"socket.io",
+	"stylus"
+	
+    ],
+    "version": "0.1.0"
+}
