@@ -127,6 +127,10 @@ $(document).ready(function(){
   document.addEventListener('touchstart', function(e){e.preventDefault();}, false);
   //document.addEventListener('gesturestart', function(e){e.preventDefault();}, false);
   //document.addEventListener('gesturechange', function(e){e.preventDefault();}, false);
+
+  // Capture mouse down events on the document. This prevents text selection behavior
+  // starting when you drag the mouse with the mouse button down  
+  document.addEventListener('mousedown', function(e){e.preventDefault();}, false);
 });
 
 })();
