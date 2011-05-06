@@ -23,7 +23,6 @@ $(document).ready(function(){
       isMouseDown = false;
   $('#presser').mousedown(function(e){
     onMouseDown(e);
-    isMouseDown = true;
     return true;
   });
   
@@ -40,7 +39,7 @@ $(document).ready(function(){
     // The issue was that the button wasn't getting the mouseup
     // events because the mouse isn't over them. This was causing the button
     // to get stuck down.
-    isMouseDown = false;
+    isMouseDown = true;
     
     
     // If an event was supplied it was to signal
@@ -68,6 +67,11 @@ $(document).ready(function(){
   });
   
   $('#presser').mouseleave(function(e){
+    // If the mouse wasn't down don't emulate a mouse up event.
+    if(isMouseDown==false){
+      return;
+    }
+  
     // If the mouse left the bounds of the button while in a pressed down
     // state we pop the button back up
     onMouseUp(e);
