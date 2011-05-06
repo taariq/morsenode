@@ -125,6 +125,8 @@ $(document).ready(function(){
   // Capturing touch start events on the document prevents all native guestures
   // mobile browsers such as pinch/zoom and scrolling swipes
   document.addEventListener('touchstart', function(e){e.preventDefault();}, false);
+  //document.addEventListener('gesturestart', function(e){e.preventDefault();}, false);
+  //document.addEventListener('gesturechange', function(e){e.preventDefault();}, false);
 });
 
 })();
