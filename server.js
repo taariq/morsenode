@@ -36,7 +36,7 @@ app.configure('production', function(){
   app.use(express.errorHandler());
 });
 
-app.listen(80);
+app.listen(port);
 
 // setup socket io logic.
 var io = require('socket.io');
