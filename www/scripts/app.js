@@ -116,7 +116,7 @@ $(document).ready(function(){
     }
   }
   
-  var presser = document.getElementById('presser');      
+  var presser = document.getElementById('presser');
   presser.addEventListener('touchstart', onMouseDown, false);
   presser.addEventListener('touchmove', function(e){e.preventDefault();}, false);
   presser.addEventListener('touchend', onMouseUp, false);
@@ -127,6 +127,13 @@ $(document).ready(function(){
   document.addEventListener('touchstart', function(e){e.preventDefault();}, false);
   //document.addEventListener('gesturestart', function(e){e.preventDefault();}, false);
   //document.addEventListener('gesturechange', function(e){e.preventDefault();}, false);
+
+  // This one is hacky. For some reason our touchstart listener above stops clicking on
+  // the fork me ribbon from working. This fixed it. TODO: Figure out why and remove this
+  // hack.
+  document.getElementById('fork-me').addEventListener('touchstart', function(e){
+    window.location.href = 'http://github.com/papercheck/morsenode';
+  }, false);
 
   // Capture mouse down events on the document. This prevents text selection behavior
   // starting when you drag the mouse with the mouse button down  
